@@ -1,213 +1,868 @@
-<div align="center">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Asilbek | AI Developer Portfolio</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #0a0f18;
+            color: #f5f7fa;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* NAVBAR */
+
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(10, 15, 24, 0.92);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #1d2939;
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 18px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+            color: #00eaff;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #b8c2cc;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #00eaff;
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background:
+                radial-gradient(circle at top, #11283b 0%, #0a0f18 45%);
+        }
+
+        .hero-content {
+            max-width: 850px;
+        }
+
+        .hello {
+            color: #00eaff;
+            font-size: 18px;
+            margin-bottom: 15px;
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 8vw, 80px);
+            margin-bottom: 15px;
+            letter-spacing: -2px;
+        }
+
+        .hero h1 span {
+            color: #00eaff;
+        }
+
+        .hero h2 {
+            font-size: clamp(20px, 4vw, 30px);
+            color: #c5ced8;
+            font-weight: normal;
+            margin-bottom: 25px;
+        }
+
+        .typing {
+            color: #00eaff;
+            font-size: 20px;
+            min-height: 30px;
+        }
+
+        .hero-buttons {
+            margin-top: 35px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 13px 25px;
+            border-radius: 8px;
+            border: 1px solid #00eaff;
+            color: #00eaff;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .btn.primary {
+            background: #00eaff;
+            color: #071018;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px rgba(0, 234, 255, 0.25);
+        }
+
+        /* GENERAL */
+
+        section {
+            max-width: 1100px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 38px;
+            margin-bottom: 50px;
+        }
+
+        .section-title span {
+            color: #00eaff;
+        }
+
+        /* ABOUT */
+
+        .about {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .about-card {
+            background: #101722;
+            border: 1px solid #1d2939;
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .about-card:hover {
+            border-color: #00eaff;
+            transform: translateY(-5px);
+        }
+
+        .about-card h3 {
+            color: #00eaff;
+            margin-bottom: 15px;
+            font-size: 22px;
+        }
+
+        .about-card p {
+            color: #aeb8c3;
+        }
+
+        /* SKILLS */
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .skill {
+            background: #101722;
+            border: 1px solid #1d2939;
+            border-radius: 12px;
+            padding: 25px 15px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .skill:hover {
+            transform: translateY(-7px);
+            border-color: #00eaff;
+        }
+
+        .skill .icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .skill h3 {
+            font-size: 17px;
+        }
+
+        /* PROJECTS */
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+        }
+
+        .project {
+            background: #101722;
+            border: 1px solid #1d2939;
+            border-radius: 15px;
+            padding: 30px;
+            transition: 0.3s;
+        }
+
+        .project:hover {
+            transform: translateY(-7px);
+            border-color: #00eaff;
+            box-shadow: 0 10px 35px rgba(0, 234, 255, 0.08);
+        }
+
+        .project-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .project h3 {
+            color: #ffffff;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .project p {
+            color: #9da8b5;
+            margin-bottom: 25px;
+        }
+
+        .project-btn {
+            display: inline-block;
+            padding: 10px 18px;
+            background: #00eaff;
+            color: #071018;
+            border-radius: 7px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .project-btn:hover {
+            box-shadow: 0 0 20px rgba(0, 234, 255, 0.35);
+        }
+
+        /* GOALS */
+
+        .goals {
+            background: #101722;
+            border: 1px solid #1d2939;
+            border-radius: 15px;
+            padding: 35px;
+        }
+
+        .goals ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .goals li {
+            color: #c3ccd5;
+            padding: 12px;
+            border-bottom: 1px solid #1d2939;
+        }
+
+        .goals li::before {
+            content: "✓";
+            color: #00eaff;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        /* CONTACT */
+
+        .contact {
+            text-align: center;
+        }
+
+        .contact-box {
+            background: #101722;
+            border: 1px solid #1d2939;
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 700px;
+            margin: auto;
+        }
+
+        .contact-box p {
+            color: #aeb8c3;
+            margin: 12px 0;
+        }
+
+        .contact-box strong {
+            color: #ffffff;
+        }
+
+        .contact-buttons {
+            margin-top: 25px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        /* FOOTER */
+
+        footer {
+            text-align: center;
+            padding: 35px 20px;
+            border-top: 1px solid #1d2939;
+            color: #778392;
+        }
+
+        footer span {
+            color: #00eaff;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 800px) {
+
+            .nav-links {
+                display: none;
+            }
+
+            .about {
+                grid-template-columns: 1fr;
+            }
+
+            .skills {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects {
+                grid-template-columns: 1fr;
+            }
+
+            .goals ul {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .skills {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            section {
+                padding: 65px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVIGATION -->
+
+    <nav>
+        <div class="nav-container">
+
+            <div class="logo">
+                Asilbek.dev
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#goals">Goals</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+        </div>
+    </nav>
+
+
+    <!-- HERO -->
+
+    <header class="hero">
+
+        <div class="hero-content">
+
+            <div class="hello">
+                👋 Hello, I'm
+            </div>
+
+            <h1>
+                <span>Asilbek</span>
+            </h1>
+
+            <h2>
+                Computer Engineering Student • Web Developer
+            </h2>
+
+            <div class="typing" id="typing">
+                Future AI Developer
+            </div>
+
+            <div class="hero-buttons">
+
+                <a
+                    class="btn primary"
+                    href="https://asilbek-maker.github.io/Web-Programming/"
+                    target="_blank">
+                    🌐 Web Programming
+                </a>
+
+                <a
+                    class="btn"
+                    href="https://github.com/asilbek-maker"
+                    target="_blank">
+                    GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ABOUT -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            About <span>Me</span>
+        </h2>
+
+        <div class="about">
+
+            <div class="about-card">
+
+                <h3>🎓 Education</h3>
+
+                <p>
+                    I am a Computer Engineering student interested in
+                    software development, web technologies and artificial
+                    intelligence.
+                </p>
+
+            </div>
+
+            <div class="about-card">
+
+                <h3>🚀 My Focus</h3>
+
+                <p>
+                    I am currently developing my skills in HTML, CSS,
+                    JavaScript, React and Python while exploring Artificial
+                    Intelligence and Machine Learning.
+                </p>
 
-# 👋 Hi, I'm Asilbek
+            </div>
 
-### 💻 Computer Engineering Student • Web Developer • Future AI Developer
+            <div class="about-card">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&size=22&duration=3000&pause=1000&color=00F7FF&center=true&vCenter=true&width=650&lines=Web+Programming+Student;Frontend+Developer;HTML+%7C+CSS+%7C+JavaScript+%7C+React;Learning+Python+%26+AI;Future+AI+Developer" />
+                <h3>💻 What I Build</h3>
 
-<br><br>
+                <p>
+                    I build university assignments, web applications,
+                    programming projects and personal experiments.
+                </p>
 
-<img src="https://komarev.com/ghpvc/?username=asilbek-maker&label=PROFILE+VIEWS&color=00F7FF&style=for-the-badge" />
+            </div>
 
-</div>
+            <div class="about-card">
 
----
+                <h3>🤖 Future Goal</h3>
+
+                <p>
+                    My goal is to become a professional AI Developer and
+                    create useful real-world applications.
+                </p>
 
-## 🧑‍💻 About Me
+            </div>
 
-🎓 **Computer Engineering Student**
+        </div>
 
-💻 Interested in **Web Development, Artificial Intelligence & Software Engineering**
+    </section>
 
-🌱 Currently improving my programming skills and learning new technologies.
 
-🚀 Building projects through university assignments and personal practice.
+    <!-- SKILLS -->
 
-📚 Currently working with **HTML, CSS, JavaScript, React and Python**.
+    <section id="skills">
 
-🤖 Interested in **Artificial Intelligence and Machine Learning**.
+        <h2 class="section-title">
+            My <span>Skills</span>
+        </h2>
 
-🎯 My goal is to become a **professional AI Developer**.
+        <div class="skills">
 
----
+            <div class="skill">
+                <div class="icon">🌐</div>
+                <h3>HTML5</h3>
+            </div>
 
-## 🛠️ Skills
+            <div class="skill">
+                <div class="icon">🎨</div>
+                <h3>CSS3</h3>
+            </div>
 
-<div align="center">
+            <div class="skill">
+                <div class="icon">⚡</div>
+                <h3>JavaScript</h3>
+            </div>
 
-<img src="https://skillicons.dev/icons?i=html,css,js,react,python,git,github,vscode" />
+            <div class="skill">
+                <div class="icon">⚛️</div>
+                <h3>React</h3>
+            </div>
 
-</div>
+            <div class="skill">
+                <div class="icon">🐍</div>
+                <h3>Python</h3>
+            </div>
 
----
+            <div class="skill">
+                <div class="icon">🔧</div>
+                <h3>Git</h3>
+            </div>
 
-## 🚀 Featured Projects
+            <div class="skill">
+                <div class="icon">🐙</div>
+                <h3>GitHub</h3>
+            </div>
 
-<div align="center">
+            <div class="skill">
+                <div class="icon">🤖</div>
+                <h3>AI / ML</h3>
+            </div>
 
-<table>
-<tr>
+        </div>
 
-<td align="center" width="50%">
+    </section>
 
-### 🌐 Web Programming
 
-University web programming assignments, HTML/CSS projects and class exercises.
+    <!-- PROJECTS -->
 
-<br><br>
+    <section id="projects">
 
-<a href="https://asilbek-maker.github.io/Web-Programming/">
-<img src="https://img.shields.io/badge/VIEW%20WEBSITE-00F7FF?style=for-the-badge&logo=google-chrome&logoColor=black"/>
-</a>
+        <h2 class="section-title">
+            Featured <span>Projects</span>
+        </h2>
 
-</td>
+        <div class="projects">
 
-<td align="center" width="50%">
 
-### 🤖 Machine Learning
+            <!-- WEB PROGRAMMING -->
 
-Projects and experiments related to machine learning and data processing.
+            <div class="project">
 
-<br><br>
+                <div class="project-icon">
+                    🌐
+                </div>
 
-<a href="https://github.com/asilbek-maker/Machine-Learning">
-<img src="https://img.shields.io/badge/VIEW%20PROJECT-00F7FF?style=for-the-badge&logo=github&logoColor=black"/>
-</a>
+                <h3>
+                    Web Programming
+                </h3>
 
-</td>
+                <p>
+                    University web programming assignments, HTML/CSS
+                    projects and weekly class exercises.
+                </p>
 
-</tr>
+                <a
+                    class="project-btn"
+                    href="https://asilbek-maker.github.io/Web-Programming/"
+                    target="_blank">
+                    View Website →
+                </a>
 
-<tr>
+            </div>
 
-<td align="center" width="50%">
 
-### 💻 Desktop Tutorial
+            <!-- MACHINE LEARNING -->
 
-Programming and desktop development practice projects.
+            <div class="project">
 
-<br><br>
+                <div class="project-icon">
+                    🤖
+                </div>
 
-<a href="https://github.com/asilbek-maker/desktop-tutorial">
-<img src="https://img.shields.io/badge/VIEW%20PROJECT-00F7FF?style=for-the-badge&logo=github&logoColor=black"/>
-</a>
+                <h3>
+                    Machine Learning
+                </h3>
 
-</td>
+                <p>
+                    Machine learning projects, experiments and
+                    data-related programming practice.
+                </p>
 
-<td align="center" width="50%">
+                <a
+                    class="project-btn"
+                    href="https://github.com/asilbek-maker/Machine-Learning"
+                    target="_blank">
+                    View Project →
+                </a>
 
-### 📊 Data Process Programming
+            </div>
 
-Programming exercises and data-related projects.
 
-<br><br>
+            <!-- DESKTOP -->
 
-<a href="https://github.com/asilbek-maker/Data-Process-Programming">
-<img src="https://img.shields.io/badge/VIEW%20PROJECT-00F7FF?style=for-the-badge&logo=github&logoColor=black"/>
-</a>
+            <div class="project">
 
-</td>
+                <div class="project-icon">
+                    💻
+                </div>
 
-</tr>
-</table>
+                <h3>
+                    Desktop Tutorial
+                </h3>
 
-</div>
+                <p>
+                    Programming and desktop development practice projects.
+                </p>
 
----
+                <a
+                    class="project-btn"
+                    href="https://github.com/asilbek-maker/desktop-tutorial"
+                    target="_blank">
+                    View Project →
+                </a>
 
-## 📊 GitHub Statistics
+            </div>
 
-<div align="center">
 
-<img height="180" src="https://github-readme-stats.vercel.app/api?username=asilbek-maker&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00F7FF&icon_color=00F7FF&text_color=FFFFFF" />
+            <!-- DATA PROCESS -->
 
-<img height="180" src="https://github-readme-stats.vercel.app/api/top-langs/?username=asilbek-maker&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=00F7FF&text_color=FFFFFF" />
+            <div class="project">
 
-</div>
+                <div class="project-icon">
+                    📊
+                </div>
 
----
+                <h3>
+                    Data Process Programming
+                </h3>
 
-## 🔥 GitHub Streak
+                <p>
+                    Programming exercises and data processing projects.
+                </p>
 
-<div align="center">
+                <a
+                    class="project-btn"
+                    href="https://github.com/asilbek-maker/Data-Process-Programming"
+                    target="_blank">
+                    View Project →
+                </a>
 
-<img src="https://streak-stats.demolab.com?user=asilbek-maker&theme=tokyonight&hide_border=true&background=0D1117&ring=00F7FF&fire=00F7FF&currStreakLabel=00F7FF" />
+            </div>
 
-</div>
+        </div>
 
----
+    </section>
 
-## 📈 Contribution Graph
 
-<div align="center">
+    <!-- GOALS -->
 
-<img src="https://github-readme-activity-graph.vercel.app/graph?username=asilbek-maker&bg_color=0D1117&color=FFFFFF&line=00F7FF&point=FFFFFF&area=true&hide_border=true" />
+    <section id="goals">
 
-</div>
+        <h2 class="section-title">
+            2026 <span>Goals</span>
+        </h2>
 
----
+        <div class="goals">
 
-## 🎯 2026 Goals
+            <ul>
 
-- [ ] Improve JavaScript
-- [ ] Build more React projects
-- [ ] Learn Python deeply
-- [ ] Learn Artificial Intelligence
-- [ ] Learn Machine Learning
-- [ ] Build AI-powered applications
-- [ ] Build real-world web applications
-- [ ] Create a professional AI Developer portfolio
-- [ ] Become a professional AI Developer
+                <li>Improve JavaScript skills</li>
 
----
+                <li>Build more React projects</li>
 
-## 📚 Currently Learning
+                <li>Learn Python deeply</li>
 
-<div align="center">
+                <li>Learn Artificial Intelligence</li>
 
-<img src="https://img.shields.io/badge/HTML5-0D1117?style=for-the-badge&logo=html5&logoColor=E34F26"/>
-<img src="https://img.shields.io/badge/CSS3-0D1117?style=for-the-badge&logo=css3&logoColor=1572B6"/>
-<img src="https://img.shields.io/badge/JavaScript-0D1117?style=for-the-badge&logo=javascript&logoColor=F7DF1E"/>
-<img src="https://img.shields.io/badge/React-0D1117?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-<img src="https://img.shields.io/badge/Python-0D1117?style=for-the-badge&logo=python&logoColor=3776AB"/>
-<img src="https://img.shields.io/badge/AI-0D1117?style=for-the-badge&logo=openai&logoColor=00F7FF"/>
-<img src="https://img.shields.io/badge/Machine%20Learning-0D1117?style=for-the-badge&logo=tensorflow&logoColor=FF6F00"/>
+                <li>Learn Machine Learning</li>
 
-</div>
+                <li>Build AI-powered applications</li>
 
----
+                <li>Build real-world web applications</li>
 
-## 📫 Contact Me
+                <li>Create a professional portfolio</li>
 
-<div align="center">
+                <li>Become a professional AI Developer</li>
 
-<a href="mailto:asilbek@gachon.ac.kr">
-<img src="https://img.shields.io/badge/EMAIL-0D1117?style=for-the-badge&logo=gmail&logoColor=EA4335"/>
-</a>
+            </ul>
 
-<a href="tel:01039274994">
-<img src="https://img.shields.io/badge/PHONE-0D1117?style=for-the-badge&logo=phone&logoColor=00F7FF"/>
-</a>
+        </div>
 
-<a href="https://github.com/asilbek-maker">
-<img src="https://img.shields.io/badge/GITHUB-0D1117?style=for-the-badge&logo=github&logoColor=FFFFFF"/>
-</a>
+    </section>
 
-<br><br>
 
-📧 **asilbek@gachon.ac.kr**
+    <!-- CONTACT -->
 
-📱 **010-3927-4994**
+    <section id="contact">
 
-</div>
+        <h2 class="section-title">
+            Contact <span>Me</span>
+        </h2>
 
----
+        <div class="contact-box">
 
-<div align="center">
+            <p>
+                📧 Email:
+                <strong>asilbek@gachon.ac.kr</strong>
+            </p>
 
-### 💡 Keep Learning • Keep Building • Keep Improving
+            <p>
+                📱 Phone:
+                <strong>010-3927-4994</strong>
+            </p>
 
-⭐ Thanks for visiting my profile!
+            <div class="contact-buttons">
 
-</div>
+                <a
+                    class="btn primary"
+                    href="mailto:asilbek@gachon.ac.kr">
+                    📧 Email Me
+                </a>
+
+                <a
+                    class="btn"
+                    href="tel:01039274994">
+                    📱 Call Me
+                </a>
+
+                <a
+                    class="btn"
+                    href="https://github.com/asilbek-maker"
+                    target="_blank">
+                    🐙 GitHub
+                </a>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            © 2026 <span>Asilbek</span> •
+            Computer Engineering Student •
+            Future AI Developer
+        </p>
+
+        <p>
+            Keep Learning • Keep Building • Keep Improving 🚀
+        </p>
+
+    </footer>
+
+
+    <!-- TYPING ANIMATION -->
+
+    <script>
+
+        const words = [
+            "Future AI Developer",
+            "Web Developer",
+            "Frontend Developer",
+            "Computer Engineering Student",
+            "Learning Python & AI",
+            "Building New Projects"
+        ];
+
+        let wordIndex = 0;
+        let charIndex = 0;
+        let deleting = false;
+
+        const typingElement = document.getElementById("typing");
+
+        function typeEffect() {
+
+            const currentWord = words[wordIndex];
+
+            if (!deleting) {
+
+                typingElement.textContent =
+                    currentWord.substring(0, charIndex + 1);
+
+                charIndex++;
+
+                if (charIndex === currentWord.length) {
+
+                    deleting = true;
+
+                    setTimeout(typeEffect, 1500);
+
+                    return;
+                }
+
+            } else {
+
+                typingElement.textContent =
+                    currentWord.substring(0, charIndex - 1);
+
+                charIndex--;
+
+                if (charIndex === 0) {
+
+                    deleting = false;
+
+                    wordIndex++;
+
+                    if (wordIndex === words.length) {
+                        wordIndex = 0;
+                    }
+
+                }
+
+            }
+
+            setTimeout(
+                typeEffect,
+                deleting ? 45 : 85
+            );
+        }
+
+        typeEffect();
+
+    </script>
+
+</body>
+</html>
