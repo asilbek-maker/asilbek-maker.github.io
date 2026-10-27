@@ -3,866 +3,950 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Asilbek | AI Developer Portfolio</title>
-
+    <meta name="theme-color" content="#10110f">
+    <meta name="description" content="Asilbek — computer engineering student, web developer, and AI enthusiast.">
+    <title>Asilbek — Portfolio</title>
     <style>
+        :root {
+            color-scheme: dark;
+            --bg: #10110f;
+            --surface: #181916;
+            --paper: #eeeee8;
+            --text: #f0f0eb;
+            --muted: #a0a198;
+            --line: #353630;
+            --accent: #d7ff70;
+            --mono: "Courier New", monospace;
+            --sans: "Segoe UI", Arial, sans-serif;
+        }
+
         * {
-            margin: 0;
-            padding: 0;
             box-sizing: border-box;
         }
 
         html {
             scroll-behavior: smooth;
+            scroll-padding-top: 85px;
         }
 
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: #0a0f18;
-            color: #f5f7fa;
-            line-height: 1.6;
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--sans);
+            -webkit-font-smoothing: antialiased;
         }
 
         a {
-            text-decoration: none;
             color: inherit;
         }
 
-        /* NAVBAR */
+        .shell {
+            width: min(1280px, calc(100% - 72px));
+            margin: 0 auto;
+        }
 
-        nav {
+        .mono {
+            font-family: var(--mono);
+        }
+
+        .site-header {
             position: sticky;
             top: 0;
-            z-index: 1000;
-            background: rgba(10, 15, 24, 0.92);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid #1d2939;
-        }
-
-        .nav-container {
-            max-width: 1100px;
-            margin: auto;
-            padding: 18px 25px;
+            z-index: 10;
             display: flex;
-            justify-content: space-between;
+            min-height: 76px;
             align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--line);
+            background: rgba(16, 17, 15, 0.94);
+            backdrop-filter: blur(14px);
         }
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-            color: #00eaff;
+        .brand {
+            font-size: 0.86rem;
+            font-weight: 800;
+            letter-spacing: -0.035em;
+            text-decoration: none;
+            text-transform: uppercase;
+        }
+
+        .brand span {
+            color: var(--accent);
         }
 
         .nav-links {
             display: flex;
-            gap: 25px;
-            list-style: none;
+            align-items: center;
+            gap: 29px;
         }
 
         .nav-links a {
-            color: #b8c2cc;
-            transition: 0.3s;
+            color: #b6b7ae;
+            font-size: 0.74rem;
+            font-weight: 650;
+            text-decoration: none;
+            transition: color 160ms ease;
         }
 
-        .nav-links a:hover {
-            color: #00eaff;
+        .nav-links a:hover,
+        .nav-links a:focus-visible {
+            color: var(--accent);
         }
 
-        /* HERO */
+        .nav-links .nav-contact {
+            padding: 10px 15px;
+            border: 1px solid #5b5c53;
+            border-radius: 999px;
+            color: var(--text);
+        }
 
         .hero {
-            min-height: 90vh;
-            display: flex;
+            position: relative;
+            display: grid;
+            min-height: 660px;
+            grid-template-columns: minmax(0, 1fr) 230px;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 80px 20px;
-            background:
-                radial-gradient(circle at top, #11283b 0%, #0a0f18 45%);
+            gap: 48px;
+            padding: 100px 0 94px;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            position: absolute;
+            top: 110px;
+            right: -25px;
+            z-index: -1;
+            color: rgba(242, 242, 233, 0.027);
+            content: "ASILBEK";
+            font-size: clamp(9rem, 24vw, 21rem);
+            font-weight: 800;
+            letter-spacing: -0.12em;
+            line-height: 0.8;
+            pointer-events: none;
         }
 
         .hero-content {
-            max-width: 850px;
+            position: relative;
+            z-index: 1;
         }
 
-        .hello {
-            color: #00eaff;
-            font-size: 18px;
-            margin-bottom: 15px;
-        }
-
-        .hero h1 {
-            font-size: clamp(45px, 8vw, 80px);
-            margin-bottom: 15px;
-            letter-spacing: -2px;
-        }
-
-        .hero h1 span {
-            color: #00eaff;
-        }
-
-        .hero h2 {
-            font-size: clamp(20px, 4vw, 30px);
-            color: #c5ced8;
-            font-weight: normal;
-            margin-bottom: 25px;
-        }
-
-        .typing {
-            color: #00eaff;
-            font-size: 20px;
-            min-height: 30px;
-        }
-
-        .hero-buttons {
-            margin-top: 35px;
+        .eyebrow {
             display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
+            align-items: center;
+            gap: 11px;
+            margin: 0 0 30px;
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 0.68rem;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
         }
 
-        .btn {
-            padding: 13px 25px;
-            border-radius: 8px;
-            border: 1px solid #00eaff;
-            color: #00eaff;
-            transition: 0.3s;
-            font-weight: bold;
+        .eyebrow::before {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            content: "";
         }
 
-        .btn.primary {
-            background: #00eaff;
-            color: #071018;
+        h1 {
+            margin: 0;
+            font-size: clamp(4.4rem, 12vw, 10.7rem);
+            font-weight: 760;
+            letter-spacing: -0.105em;
+            line-height: 0.78;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 0 25px rgba(0, 234, 255, 0.25);
+        h1 span {
+            display: block;
+            margin-top: 0.12em;
+            color: var(--accent);
         }
 
-        /* GENERAL */
-
-        section {
-            max-width: 1100px;
-            margin: auto;
-            padding: 90px 25px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 38px;
-            margin-bottom: 50px;
-        }
-
-        .section-title span {
-            color: #00eaff;
-        }
-
-        /* ABOUT */
-
-        .about {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-        }
-
-        .about-card {
-            background: #101722;
-            border: 1px solid #1d2939;
-            border-radius: 15px;
-            padding: 30px;
-            transition: 0.3s;
-        }
-
-        .about-card:hover {
-            border-color: #00eaff;
-            transform: translateY(-5px);
-        }
-
-        .about-card h3 {
-            color: #00eaff;
-            margin-bottom: 15px;
-            font-size: 22px;
-        }
-
-        .about-card p {
-            color: #aeb8c3;
-        }
-
-        /* SKILLS */
-
-        .skills {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 18px;
-        }
-
-        .skill {
-            background: #101722;
-            border: 1px solid #1d2939;
-            border-radius: 12px;
-            padding: 25px 15px;
-            text-align: center;
-            transition: 0.3s;
-        }
-
-        .skill:hover {
-            transform: translateY(-7px);
-            border-color: #00eaff;
-        }
-
-        .skill .icon {
-            font-size: 38px;
-            margin-bottom: 10px;
-        }
-
-        .skill h3 {
-            font-size: 17px;
-        }
-
-        /* PROJECTS */
-
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+        .hero-bottom {
+            display: flex;
+            max-width: 760px;
+            align-items: end;
+            justify-content: space-between;
             gap: 25px;
+            margin-top: 42px;
         }
 
-        .project {
-            background: #101722;
-            border: 1px solid #1d2939;
-            border-radius: 15px;
-            padding: 30px;
-            transition: 0.3s;
+        .hero-description {
+            max-width: 440px;
+            margin: 0;
+            color: #b0b1a8;
+            font-size: 0.96rem;
+            line-height: 1.8;
         }
 
-        .project:hover {
-            transform: translateY(-7px);
-            border-color: #00eaff;
-            box-shadow: 0 10px 35px rgba(0, 234, 255, 0.08);
-        }
-
-        .project-icon {
-            font-size: 40px;
-            margin-bottom: 15px;
-        }
-
-        .project h3 {
-            color: #ffffff;
-            font-size: 24px;
-            margin-bottom: 12px;
-        }
-
-        .project p {
-            color: #9da8b5;
-            margin-bottom: 25px;
-        }
-
-        .project-btn {
-            display: inline-block;
-            padding: 10px 18px;
-            background: #00eaff;
-            color: #071018;
-            border-radius: 7px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .project-btn:hover {
-            box-shadow: 0 0 20px rgba(0, 234, 255, 0.35);
-        }
-
-        /* GOALS */
-
-        .goals {
-            background: #101722;
-            border: 1px solid #1d2939;
-            border-radius: 15px;
-            padding: 35px;
-        }
-
-        .goals ul {
-            list-style: none;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .goals li {
-            color: #c3ccd5;
-            padding: 12px;
-            border-bottom: 1px solid #1d2939;
-        }
-
-        .goals li::before {
-            content: "✓";
-            color: #00eaff;
-            margin-right: 10px;
-            font-weight: bold;
-        }
-
-        /* CONTACT */
-
-        .contact {
-            text-align: center;
-        }
-
-        .contact-box {
-            background: #101722;
-            border: 1px solid #1d2939;
-            border-radius: 15px;
-            padding: 40px;
-            max-width: 700px;
-            margin: auto;
-        }
-
-        .contact-box p {
-            color: #aeb8c3;
-            margin: 12px 0;
-        }
-
-        .contact-box strong {
-            color: #ffffff;
-        }
-
-        .contact-buttons {
-            margin-top: 25px;
-            display: flex;
+        .pill-link {
+            display: inline-flex;
+            flex: 0 0 auto;
+            min-height: 43px;
+            align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 9px;
+            padding: 0 16px;
+            border: 1px solid #66675e;
+            border-radius: 999px;
+            font-size: 0.73rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: border-color 160ms ease, color 160ms ease;
+        }
+
+        .pill-link:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .hero-stamp {
+            display: flex;
+            min-height: 270px;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 17px;
+            border: 1px solid #46473f;
+            background:
+                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
+                #151612;
+            background-size: 23px 23px;
+        }
+
+        .stamp-label,
+        .stamp-caption {
+            color: #a4a59b;
+            font-family: var(--mono);
+            font-size: 0.62rem;
+            line-height: 1.6;
+        }
+
+        .stamp-mark {
+            align-self: center;
+            color: var(--accent);
+            font-size: 5.2rem;
+            font-weight: 300;
+            line-height: 1;
+        }
+
+        .section {
+            padding: 74px 0 82px;
+            border-top: 1px solid var(--line);
+        }
+
+        .section-heading {
+            display: grid;
+            grid-template-columns: 80px minmax(0, 1fr) minmax(200px, 320px);
+            align-items: end;
+            gap: 22px;
+            margin-bottom: 34px;
+        }
+
+        .section-index {
+            align-self: start;
+            padding-top: 9px;
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 0.72rem;
+        }
+
+        .section-label {
+            margin: 0 0 10px;
+            color: var(--muted);
+            font-family: var(--mono);
+            font-size: 0.65rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        h2 {
+            margin: 0;
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 650;
+            letter-spacing: -0.08em;
+            line-height: 0.96;
+        }
+
+        .section-description {
+            margin: 0 0 3px;
+            color: #a8a99f;
+            font-size: 0.86rem;
+            line-height: 1.75;
+        }
+
+        .course-panel {
+            padding: 27px 34px 12px;
+            background: var(--paper);
+            color: #181915;
+        }
+
+        .course-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #c9c9c0;
+            color: #6a6b63;
+            font-family: var(--mono);
+            font-size: 0.64rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .course-overview {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            align-items: end;
+            gap: 20px;
+            padding: 25px 0;
+            border-bottom: 1px solid #c9c9c0;
+        }
+
+        .course-overview h3 {
+            margin: 0;
+            font-size: clamp(1.7rem, 4vw, 3rem);
+            letter-spacing: -0.065em;
+        }
+
+        .course-overview p {
+            max-width: 560px;
+            margin: 9px 0 0;
+            color: #696a61;
+            font-size: 0.82rem;
+            line-height: 1.65;
+        }
+
+        .course-overview .course-link {
+            padding: 11px 15px;
+            border: 1px solid #999a90;
+            border-radius: 999px;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-decoration: none;
+            white-space: nowrap;
+            transition: background 160ms ease;
+        }
+
+        .course-overview .course-link:hover {
+            background: #dfe1d7;
+        }
+
+        .week-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0 24px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .week-link {
+            display: flex;
+            min-height: 74px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            border-bottom: 1px solid #c9c9c0;
+            text-decoration: none;
+            transition: padding 160ms ease, background 160ms ease;
+        }
+
+        .week-link:hover {
+            padding: 0 8px;
+            background: #e2e4da;
+        }
+
+        .week-number {
+            color: #73746b;
+            font-family: var(--mono);
+            font-size: 0.64rem;
+        }
+
+        .week-name {
+            margin-left: auto;
+            font-size: 0.92rem;
+            font-weight: 650;
+        }
+
+        .week-arrow {
+            color: #6d6e65;
+            font-size: 1rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 16px;
+        }
+
+        .project-card {
+            position: relative;
+            display: flex;
+            min-height: 295px;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 25px;
+            overflow: hidden;
+            background: var(--surface);
+            text-decoration: none;
+            transition: transform 180ms ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .project-card::after {
+            position: absolute;
+            right: -76px;
+            bottom: -180px;
+            width: 300px;
+            height: 300px;
+            border: 1px solid rgba(240, 240, 235, .17);
+            border-radius: 50%;
+            box-shadow: 0 0 0 28px rgba(240, 240, 235, .035), 0 0 0 56px rgba(240, 240, 235, .025);
+            content: "";
+            pointer-events: none;
+        }
+
+        .project-card.overlap {
+            background: #d7ff70;
+            color: #171813;
+        }
+
+        .project-card.overlap::after {
+            border-color: rgba(23, 24, 19, .23);
+            box-shadow: 0 0 0 28px rgba(23, 24, 19, .04), 0 0 0 56px rgba(23, 24, 19, .03);
+        }
+
+        .project-card.machine {
+            background: #d9e3ed;
+            color: #18212b;
+        }
+
+        .project-card.desktop {
+            background: #c6b8aa;
+            color: #201c19;
+        }
+
+        .project-card.data {
+            background: #d2d3c7;
+            color: #1d201b;
+        }
+
+        .project-meta {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            font-family: var(--mono);
+            font-size: 0.61rem;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+        }
+
+        .project-card:not(.overlap) .project-meta {
+            color: rgba(24, 25, 21, .68);
+        }
+
+        .project-card.overlap .project-meta {
+            color: #43512c;
+        }
+
+        .project-title {
+            position: relative;
+            z-index: 1;
+            margin: auto 0 0;
+            padding-top: 50px;
+            font-size: clamp(2.3rem, 5.3vw, 4.7rem);
+            font-weight: 700;
+            letter-spacing: -0.09em;
+            line-height: 0.94;
+        }
+
+        .project-description {
+            position: relative;
+            z-index: 1;
+            max-width: 400px;
+            margin: 13px 0 0;
+            color: rgba(24, 25, 21, .76);
+            font-size: 0.81rem;
+            line-height: 1.65;
+        }
+
+        .project-visit {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 21px;
+            font-size: 0.73rem;
+            font-weight: 750;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1px;
+            border: 1px solid var(--line);
+            background: var(--line);
+        }
+
+        .about-item {
+            min-height: 156px;
+            padding: 23px;
+            background: var(--bg);
+        }
+
+        .about-item .about-number {
+            color: var(--accent);
+            font-family: var(--mono);
+            font-size: 0.65rem;
+        }
+
+        .about-item h3 {
+            margin: 20px 0 7px;
+            font-size: 1.05rem;
+            letter-spacing: -0.03em;
+        }
+
+        .about-item p {
+            max-width: 440px;
+            margin: 0;
+            color: #a6a79d;
+            font-size: 0.79rem;
+            line-height: 1.7;
+        }
+
+        .skills-list {
+            display: flex;
             flex-wrap: wrap;
+            gap: 9px;
+            margin: 0;
+            padding: 0;
+            list-style: none;
         }
 
-        /* FOOTER */
-
-        footer {
-            text-align: center;
-            padding: 35px 20px;
-            border-top: 1px solid #1d2939;
-            color: #778392;
+        .skills-list li {
+            padding: 11px 15px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            color: #d1d2c9;
+            font-size: 0.77rem;
         }
 
-        footer span {
-            color: #00eaff;
+        .contact-panel {
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 24px;
+            padding: 35px;
+            background: var(--paper);
+            color: #171813;
         }
 
-        /* RESPONSIVE */
+        .contact-panel h2 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+        }
 
-        @media (max-width: 800px) {
+        .contact-panel p {
+            margin: 12px 0 0;
+            color: #696a61;
+            font-size: 0.86rem;
+        }
+
+        .contact-panel .pill-link {
+            border-color: #72736a;
+        }
+
+        .contact-panel .pill-link:hover {
+            border-color: #171813;
+            color: #171813;
+        }
+
+        .site-footer {
+            display: flex;
+            min-height: 78px;
+            align-items: center;
+            justify-content: space-between;
+            gap: 18px;
+            border-top: 1px solid var(--line);
+            color: #9c9d93;
+            font-family: var(--mono);
+            font-size: 0.64rem;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+
+        .site-footer p {
+            margin: 0;
+        }
+
+        .site-footer a {
+            color: var(--text);
+            text-decoration: none;
+        }
+
+        a:focus-visible {
+            outline: 2px solid #a9d854;
+            outline-offset: 4px;
+        }
+
+        @media (max-width: 760px) {
+            .shell {
+                width: min(100% - 38px, 620px);
+            }
+
+            .site-header {
+                min-height: 68px;
+            }
 
             .nav-links {
-                display: none;
+                gap: 16px;
             }
 
-            .about {
+            .nav-links a {
+                font-size: 0.67rem;
+            }
+
+            .hero {
+                min-height: 0;
                 grid-template-columns: 1fr;
+                gap: 38px;
+                padding: 84px 0 66px;
             }
 
-            .skills {
-                grid-template-columns: repeat(2, 1fr);
+            .hero-stamp {
+                min-height: 190px;
             }
 
-            .projects {
+            .stamp-mark {
+                position: absolute;
+                top: 27px;
+                right: 34px;
+            }
+
+            .section {
+                padding: 58px 0 64px;
+            }
+
+            .section-heading {
+                grid-template-columns: 45px minmax(0, 1fr);
+                gap: 12px;
+            }
+
+            .section-description {
+                grid-column: 2;
+                max-width: 440px;
+            }
+
+            .course-panel {
+                padding: 20px 20px 10px;
+            }
+
+            .course-overview {
                 grid-template-columns: 1fr;
+                align-items: start;
             }
 
-            .goals ul {
-                grid-template-columns: 1fr;
+            .course-overview .course-link {
+                justify-self: start;
+            }
+
+            .week-list {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 0 14px;
+            }
+
+            .project-card {
+                min-height: 260px;
+                padding: 21px;
+            }
+
+            .about-item {
+                min-height: 170px;
+                padding: 18px;
+            }
+
+            .contact-panel {
+                align-items: start;
+                flex-direction: column;
+                padding: 27px;
             }
         }
 
-        @media (max-width: 450px) {
-
-            .skills {
-                grid-template-columns: 1fr 1fr;
+        @media (max-width: 480px) {
+            .shell {
+                width: calc(100% - 32px);
             }
 
-            section {
-                padding: 65px 18px;
+            .nav-links {
+                gap: 11px;
+            }
+
+            .nav-links a {
+                font-size: 0.62rem;
+            }
+
+            .nav-links .nav-contact {
+                padding: 8px 10px;
+            }
+
+            .hero {
+                padding-top: 72px;
+            }
+
+            h1 {
+                font-size: clamp(3.9rem, 19vw, 5.5rem);
+            }
+
+            .hero-bottom {
+                align-items: start;
+                flex-direction: column;
+                gap: 17px;
+            }
+
+            .section-heading {
+                grid-template-columns: 34px minmax(0, 1fr);
+            }
+
+            .course-meta {
+                align-items: start;
+                flex-direction: column;
+                gap: 7px;
+            }
+
+            .week-list {
+                grid-template-columns: 1fr;
+            }
+
+            .week-link {
+                min-height: 62px;
+            }
+
+            .project-grid,
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-card {
+                min-height: 230px;
+            }
+
+            .about-item {
+                min-height: 140px;
+            }
+
+            .site-footer {
+                align-items: start;
+                flex-direction: column;
+                justify-content: center;
+                padding: 18px 0;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                transition-duration: 0.01ms !important;
             }
         }
     </style>
 </head>
-
 <body>
-
-    <!-- NAVIGATION -->
-
-    <nav>
-        <div class="nav-container">
-
-            <div class="logo">
-                Asilbek
-            </div>
-
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#goals">Goals</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-
-        </div>
-    </nav>
-
-
-    <!-- HERO -->
-
-    <header class="hero">
-
-        <div class="hero-content">
-
-            <div class="hello">
-                👋 Hello, I'm
-            </div>
-
-            <h1>
-                <span>Asilbek</span>
-            </h1>
-
-            <h2>
-                Computer Engineering Student • Web Developer
-            </h2>
-
-            <div class="typing" id="typing">
-                Future AI Developer
-            </div>
-
-            <div class="hero-buttons">
-
-                <a
-                    class="btn primary"
-                    href="https://asilbek-maker.github.io/Web-Programming/"
-                    target="_blank">
-                    🌐 Web Programming
-                </a>
-
-                <a
-                    class="btn"
-                    href="https://github.com/asilbek-maker"
-                    target="_blank">
-                    GitHub
-                </a>
-
-            </div>
-
-        </div>
-
-    </header>
-
-
-    <!-- ABOUT -->
-
-    <section id="about">
-
-        <h2 class="section-title">
-            About <span>Me</span>
-        </h2>
-
-        <div class="about">
-
-            <div class="about-card">
-
-                <h3>🎓 Education</h3>
-
-                <p>
-                    I am a Computer Engineering student interested in
-                    software development, web technologies and artificial
-                    intelligence.
-                </p>
-
-            </div>
-
-            <div class="about-card">
-
-                <h3>🚀 My Focus</h3>
-
-                <p>
-                    I am currently developing my skills in HTML, CSS,
-                    JavaScript, React and Python while exploring Artificial
-                    Intelligence and Machine Learning.
-                </p>
-
-            </div>
-
-            <div class="about-card">
-
-                <h3>💻 What I Build</h3>
-
-                <p>
-                    I build university assignments, web applications,
-                    programming projects and personal experiments.
-                </p>
-
-            </div>
-
-            <div class="about-card">
-
-                <h3>🤖 Future Goal</h3>
-
-                <p>
-                    My goal is to become a professional AI Developer and
-                    create useful real-world applications.
-                </p>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- SKILLS -->
-
-    <section id="skills">
-
-        <h2 class="section-title">
-            My <span>Skills</span>
-        </h2>
-
-        <div class="skills">
-
-            <div class="skill">
-                <div class="icon">🌐</div>
-                <h3>HTML5</h3>
-            </div>
-
-            <div class="skill">
-                <div class="icon">🎨</div>
-                <h3>CSS3</h3>
-            </div>
-
-            <div class="skill">
-                <div class="icon">⚡</div>
-                <h3>JavaScript</h3>
-            </div>
-
-            <div class="skill">
-                <div class="icon">⚛️</div>
-                <h3>React</h3>
-            </div>
-
-            <div class="skill">
-                <div class="icon">🐍</div>
-                <h3>Python</h3>
-            </div>
-
-            <div class="skill">
-                <div class="icon">🔧</div>
-                <h3>Git</h3>
-            </div>
-
-            <div class="skill">
-                <div class="icon">🐙</div>
-                <h3>GitHub</h3>
-            </div>
-
-            <div class="skill">
-                <div class="icon">🤖</div>
-                <h3>AI / ML</h3>
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- PROJECTS -->
-
-    <section id="projects">
-
-        <h2 class="section-title">
-            Featured <span>Projects</span>
-        </h2>
-
-        <div class="projects">
-
-
-            <!-- WEB PROGRAMMING -->
-
-            <div class="project">
-
-                <div class="project-icon">
-                    🌐
+    <div class="shell">
+        <header class="site-header" id="top">
+            <a class="brand" href="#" aria-label="Asilbek home">Asilbek<span>.</span></a>
+            <nav class="nav-links" aria-label="Main navigation">
+                <a href="#about">About</a>
+                <a href="#course">Course</a>
+                <a href="#work">Work</a>
+                <a class="nav-contact" href="#contact">Contact ↘</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero" aria-labelledby="hero-title">
+                <div class="hero-content">
+                    <p class="eyebrow">Computer engineering · Web developer · 2026</p>
+                    <h1 id="hero-title">BUILDING<br>FOR THE<span>WEB.</span></h1>
+                    <div class="hero-bottom">
+                        <p class="hero-description">I’m Asilbek — a Computer Engineering student exploring web development, software, and artificial intelligence. This is where I share what I’m learning and building.</p>
+                        <a class="pill-link" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
+                    </div>
+                </div>
+                <aside class="hero-stamp" aria-label="Current learning focus">
+                    <span class="stamp-label">CURRENT FOCUS / 01—03</span>
+                    <span class="stamp-mark" aria-hidden="true">✳</span>
+                    <span class="stamp-caption">Web technologies<br>Programming · AI / ML</span>
+                </aside>
+            </section>
+
+            <section class="section" id="course" aria-labelledby="course-title">
+                <div class="section-heading">
+                    <span class="section-index">01 /</span>
+                    <div>
+                        <p class="section-label">Course archive · Weekly practice</p>
+                        <h2 id="course-title">Where I’ve<br>been learning.</h2>
+                    </div>
+                    <p class="section-description">A growing archive of assignments and class exercises from my Web Programming course. Open a week to explore the work.</p>
                 </div>
 
-                <h3>
-                    Web Programming
-                </h3>
+                <div class="course-panel">
+                    <div class="course-meta">
+                        <span>Web programming course</span>
+                        <span>Selected weeks · 2026</span>
+                    </div>
+                    <div class="course-overview">
+                        <div>
+                            <h3>Web Programming</h3>
+                            <p>HTML, CSS, and hands-on web programming practice, organized week by week.</p>
+                        </div>
+                        <a class="course-link" href="https://asilbek-maker.github.io/Web-Programming/">Open course site ↗</a>
+                    </div>
+                    <ol class="week-list">
+                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week2/"><span class="week-number">WEEK / 02</span><span class="week-name">Week 2</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
+                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week3/"><span class="week-number">WEEK / 03</span><span class="week-name">Week 3</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
+                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week4/"><span class="week-number">WEEK / 04</span><span class="week-name">Week 4</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
+                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week5/"><span class="week-number">WEEK / 05</span><span class="week-name">Week 5</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
+                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week7/"><span class="week-number">WEEK / 07</span><span class="week-name">Week 7</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
+                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week8/"><span class="week-number">WEEK / 08</span><span class="week-name">Week 8</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
+                    </ol>
+                </div>
+            </section>
 
-                <p>
-                    University web programming assignments, HTML/CSS
-                    projects and weekly class exercises.
-                </p>
-
-                <a
-                    class="project-btn"
-                    href="https://asilbek-maker.github.io/Web-Programming/"
-                    target="_blank">
-                    View Website →
-                </a>
-
-            </div>
-
-
-            <!-- MACHINE LEARNING -->
-
-            <div class="project">
-
-                <div class="project-icon">
-                    🤖
+            <section class="section" id="work" aria-labelledby="work-title">
+                <div class="section-heading">
+                    <span class="section-index">02 /</span>
+                    <div>
+                        <p class="section-label">Featured projects · 2026</p>
+                        <h2 id="work-title">Featured<br>work.</h2>
+                    </div>
+                    <p class="section-description">Coursework, experiments, and projects that are helping me learn by building.</p>
                 </div>
 
-                <h3>
-                    Machine Learning
-                </h3>
+                <div class="project-grid">
+                    <a class="project-card overlap" href="https://overlaps.tech" target="_blank" rel="noopener noreferrer">
+                        <span class="project-meta"><span>Live project</span><span>01 / Web</span></span>
+                        <div>
+                            <h3 class="project-title">Overlap</h3>
+                            <p class="project-description">A campus dating web app. Visit the live site to explore the project.</p>
+                            <span class="project-visit">Visit overlaps.tech <span aria-hidden="true">↗</span></span>
+                        </div>
+                    </a>
+                    <a class="project-card machine" href="https://github.com/asilbek-maker/Machine-Learning" target="_blank" rel="noopener noreferrer">
+                        <span class="project-meta"><span>Experiments</span><span>02 / AI</span></span>
+                        <div>
+                            <h3 class="project-title">Machine<br>Learning</h3>
+                            <p class="project-description">Machine learning experiments and data-focused programming practice.</p>
+                            <span class="project-visit">View project <span aria-hidden="true">↗</span></span>
+                        </div>
+                    </a>
+                    <a class="project-card desktop" href="https://github.com/asilbek-maker/desktop-tutorial" target="_blank" rel="noopener noreferrer">
+                        <span class="project-meta"><span>Programming</span><span>03 / Build</span></span>
+                        <div>
+                            <h3 class="project-title">Desktop<br>Tutorial</h3>
+                            <p class="project-description">Programming and desktop development practice projects.</p>
+                            <span class="project-visit">View project <span aria-hidden="true">↗</span></span>
+                        </div>
+                    </a>
+                    <a class="project-card data" href="https://github.com/asilbek-maker/Data-Process-Programming" target="_blank" rel="noopener noreferrer">
+                        <span class="project-meta"><span>Coursework</span><span>04 / Data</span></span>
+                        <div>
+                            <h3 class="project-title">Data Process<br>Programming</h3>
+                            <p class="project-description">Programming exercises and data processing projects.</p>
+                            <span class="project-visit">View project <span aria-hidden="true">↗</span></span>
+                        </div>
+                    </a>
+                </div>
+            </section>
 
-                <p>
-                    Machine learning projects, experiments and
-                    data-related programming practice.
-                </p>
-
-                <a
-                    class="project-btn"
-                    href="https://github.com/asilbek-maker/Machine-Learning"
-                    target="_blank">
-                    View Project →
-                </a>
-
-            </div>
-
-
-            <!-- DESKTOP -->
-
-            <div class="project">
-
-                <div class="project-icon">
-                    💻
+            <section class="section" id="about" aria-labelledby="about-title">
+                <div class="section-heading">
+                    <span class="section-index">03 /</span>
+                    <div>
+                        <p class="section-label">A little about me</p>
+                        <h2 id="about-title">Curiosity into<br>practice.</h2>
+                    </div>
+                    <p class="section-description">Computer Engineering student interested in software development, web technologies, and artificial intelligence.</p>
                 </div>
 
-                <h3>
-                    Desktop Tutorial
-                </h3>
-
-                <p>
-                    Programming and desktop development practice projects.
-                </p>
-
-                <a
-                    class="project-btn"
-                    href="https://github.com/asilbek-maker/desktop-tutorial"
-                    target="_blank">
-                    View Project →
-                </a>
-
-            </div>
-
-
-            <!-- DATA PROCESS -->
-
-            <div class="project">
-
-                <div class="project-icon">
-                    📊
+                <div class="about-grid">
+                    <article class="about-item">
+                        <span class="about-number">01 — EDUCATION</span>
+                        <h3>Computer Engineering</h3>
+                        <p>Studying engineering and growing my skills through classwork and personal projects.</p>
+                    </article>
+                    <article class="about-item">
+                        <span class="about-number">02 — CURRENT FOCUS</span>
+                        <h3>Web development</h3>
+                        <p>Practicing HTML, CSS, JavaScript, and React while learning how to build useful web experiences.</p>
+                    </article>
+                    <article class="about-item">
+                        <span class="about-number">03 — EXPLORING</span>
+                        <h3>Python &amp; AI / ML</h3>
+                        <p>Exploring Python, artificial intelligence, and machine learning through experiments and study.</p>
+                    </article>
+                    <article class="about-item">
+                        <span class="about-number">04 — NEXT</span>
+                        <h3>Build and keep learning</h3>
+                        <p>My goal is to create real-world applications and continue toward becoming an AI developer.</p>
+                    </article>
                 </div>
-
-                <h3>
-                    Data Process Programming
-                </h3>
-
-                <p>
-                    Programming exercises and data processing projects.
-                </p>
-
-                <a
-                    class="project-btn"
-                    href="https://github.com/asilbek-maker/Data-Process-Programming"
-                    target="_blank">
-                    View Project →
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- GOALS -->
-
-    <section id="goals">
-
-        <h2 class="section-title">
-            2026 <span>Goals</span>
-        </h2>
-
-        <div class="goals">
-
-            <ul>
-
-                <li>Improve JavaScript skills</li>
-
-                <li>Build more React projects</li>
-
-                <li>Learn Python deeply</li>
-
-                <li>Learn Artificial Intelligence</li>
-
-                <li>Learn Machine Learning</li>
-
-                <li>Build AI-powered applications</li>
-
-                <li>Build real-world web applications</li>
-
-                <li>Create a professional portfolio</li>
-
-                <li>Become a professional AI Developer</li>
-
-            </ul>
-
-        </div>
-
-    </section>
-
-
-    <!-- CONTACT -->
-
-    <section id="contact">
-
-        <h2 class="section-title">
-            Contact <span>Me</span>
-        </h2>
-
-        <div class="contact-box">
-
-            <p>
-                📧 Email:
-                <strong>asilbek@gachon.ac.kr</strong>
-            </p>
-
-            <p>
-                📱 Phone:
-                <strong>010-3927-4994</strong>
-            </p>
-
-            <div class="contact-buttons">
-
-                <a
-                    class="btn primary"
-                    href="mailto:asilbek@gachon.ac.kr">
-                    📧 Email Me
-                </a>
-
-                <a
-                    class="btn"
-                    href="tel:01039274994">
-                    📱 Call Me
-                </a>
-
-                <a
-                    class="btn"
-                    href="https://github.com/asilbek-maker"
-                    target="_blank">
-                    🐙 GitHub
-                </a>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FOOTER -->
-
-    <footer>
-
-        <p>
-            © 2026 <span>Asilbek</span> •
-            Computer Engineering Student •
-            Future AI Developer
-        </p>
-
-        <p>
-            Keep Learning • Keep Building • Keep Improving 🚀
-        </p>
-
-    </footer>
-
-
-    <!-- TYPING ANIMATION -->
-
-    <script>
-
-        const words = [
-            "Future AI Developer",
-            "Web Developer",
-            "Frontend Developer",
-            "Computer Engineering Student",
-            "Learning Python & AI",
-            "Building New Projects"
-        ];
-
-        let wordIndex = 0;
-        let charIndex = 0;
-        let deleting = false;
-
-        const typingElement = document.getElementById("typing");
-
-        function typeEffect() {
-
-            const currentWord = words[wordIndex];
-
-            if (!deleting) {
-
-                typingElement.textContent =
-                    currentWord.substring(0, charIndex + 1);
-
-                charIndex++;
-
-                if (charIndex === currentWord.length) {
-
-                    deleting = true;
-
-                    setTimeout(typeEffect, 1500);
-
-                    return;
-                }
-
-            } else {
-
-                typingElement.textContent =
-                    currentWord.substring(0, charIndex - 1);
-
-                charIndex--;
-
-                if (charIndex === 0) {
-
-                    deleting = false;
-
-                    wordIndex++;
-
-                    if (wordIndex === words.length) {
-                        wordIndex = 0;
-                    }
-
-                }
-
-            }
-
-            setTimeout(
-                typeEffect,
-                deleting ? 45 : 85
-            );
-        }
-
-        typeEffect();
-
-    </script>
-
+            </section>
+
+            <section class="section" aria-labelledby="skills-title">
+                <div class="section-heading">
+                    <span class="section-index">04 /</span>
+                    <div>
+                        <p class="section-label">Tools &amp; technologies</p>
+                        <h2 id="skills-title">Currently<br>exploring.</h2>
+                    </div>
+                    <p class="section-description">A snapshot of the languages, tools, and topics I’m learning and using in my work.</p>
+                </div>
+                <ul class="skills-list">
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                    <li>JavaScript</li>
+                    <li>React</li>
+                    <li>Python</li>
+                    <li>Git</li>
+                    <li>GitHub</li>
+                    <li>AI / ML</li>
+                </ul>
+            </section>
+
+            <section class="section" id="contact" aria-labelledby="contact-title">
+                <div class="contact-panel">
+                    <div>
+                        <p class="section-label">Have a project or idea?</p>
+                        <h2 id="contact-title">Let’s connect.</h2>
+                        <p>Reach out by email or find me on GitHub.</p>
+                    </div>
+                    <div class="hero-bottom">
+                        <a class="pill-link" href="mailto:asilbek@gachon.ac.kr">Email me ↗</a>
+                        <a class="pill-link" href="https://github.com/asilbek-maker" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>© 2026 Asilbek · Computer Engineering Student</p>
+            <a href="#top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">Back to top ↑</a>
+        </footer>
+    </div>
 </body>
 </html>
