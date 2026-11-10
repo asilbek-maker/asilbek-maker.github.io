@@ -4,825 +4,119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#11120f">
-    <meta name="description" content="Asilbek — Computer Engineering student, web developer, and AI enthusiast.">
-    <title>Asilbek — Portfolio</title>
-    <style>
-        :root {
-            color-scheme: dark;
-            --page: #11120f;
-            --panel: #191a16;
-            --paper: #eeeee7;
-            --ink: #f0f0e9;
-            --muted: #a7a89e;
-            --line: #34352e;
-            --accent: #d7ff70;
-            --mono: "Courier New", monospace;
-            --sans: "Segoe UI", Arial, sans-serif;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 85px;
-        }
-
-        body {
-            margin: 0;
-            background: var(--page);
-            color: var(--ink);
-            font-family: var(--sans);
-            -webkit-font-smoothing: antialiased;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        a:focus-visible {
-            outline: 3px solid var(--accent);
-            outline-offset: 5px;
-        }
-
-        .skip-link {
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            z-index: 20;
-            padding: 10px 14px;
-            transform: translateY(-160%);
-            background: var(--paper);
-            color: #171813;
-        }
-
-        .skip-link:focus {
-            transform: translateY(0);
-        }
-
-        main:focus-visible {
-            outline: 3px solid var(--accent);
-            outline-offset: 6px;
-        }
-
-        .shell {
-            width: min(1320px, calc(100% - 64px));
-            margin: 0 auto;
-        }
-
-        .mono,
-        .eyebrow,
-        .section-index,
-        .course-meta,
-        .week-number,
-        .project-meta,
-        .about-number,
-        .site-footer {
-            font-family: var(--mono);
-        }
-
-        .site-header {
-            position: sticky;
-            top: 0;
-            z-index: 10;
-            display: flex;
-            min-height: 78px;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid var(--line);
-            background: rgba(17, 18, 15, 0.96);
-            backdrop-filter: blur(14px);
-        }
-
-        .brand {
-            font-size: 0.9rem;
-            font-weight: 800;
-            letter-spacing: -0.04em;
-            text-decoration: none;
-            text-transform: uppercase;
-        }
-
-        .brand span {
-            color: var(--accent);
-        }
-
-        .nav-links {
-            display: flex;
-            align-items: center;
-            gap: 28px;
-        }
-
-        .nav-links a {
-            color: #c3c4bb;
-            font-size: 0.76rem;
-            font-weight: 650;
-            text-decoration: none;
-        }
-
-        .nav-links a:hover,
-        .nav-links a:focus-visible {
-            color: var(--accent);
-        }
-
-        .nav-links .nav-contact {
-            padding: 10px 15px;
-            border: 1px solid #6b6d60;
-            border-radius: 999px;
-            color: var(--ink);
-        }
-
-        .hero {
-            position: relative;
-            display: grid;
-            min-height: 610px;
-            grid-template-columns: minmax(0, 1fr) 250px;
-            align-items: center;
-            gap: 50px;
-            padding: 94px 0 100px;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            position: absolute;
-            top: 45px;
-            right: 2%;
-            z-index: -1;
-            color: rgba(240, 240, 233, 0.025);
-            content: "WEB";
-            font-size: clamp(15rem, 35vw, 31rem);
-            font-weight: 800;
-            letter-spacing: -0.11em;
-            line-height: 0.8;
-            pointer-events: none;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-
-        .eyebrow {
-            display: flex;
-            align-items: center;
-            gap: 11px;
-            margin: 0 0 27px;
-            color: var(--accent);
-            font-size: 0.7rem;
-            letter-spacing: 0.12em;
-            text-transform: uppercase;
-        }
-
-        .eyebrow::before {
-            width: 7px;
-            height: 7px;
-            border-radius: 50%;
-            background: var(--accent);
-            content: "";
-        }
-
-        h1 {
-            margin: 0;
-            font-size: clamp(4.5rem, 12.5vw, 11rem);
-            font-weight: 760;
-            letter-spacing: -0.105em;
-            line-height: 0.77;
-        }
-
-        h1 span {
-            display: block;
-            margin-top: 0.13em;
-            color: var(--accent);
-        }
-
-        .hero-bottom {
-            display: flex;
-            max-width: 760px;
-            align-items: end;
-            justify-content: space-between;
-            gap: 32px;
-            margin-top: 42px;
-        }
-
-        .hero-description {
-            max-width: 430px;
-            margin: 0;
-            color: #c3c4bb;
-            font-size: 0.98rem;
-            line-height: 1.75;
-        }
-
-        .pill-link {
-            display: inline-flex;
-            min-height: 46px;
-            flex: 0 0 auto;
-            align-items: center;
-            justify-content: center;
-            gap: 9px;
-            padding: 0 17px;
-            border: 1px solid #77796b;
-            border-radius: 999px;
-            font-size: 0.77rem;
-            font-weight: 700;
-            text-decoration: none;
-            transition: color 160ms ease, border-color 160ms ease;
-        }
-
-        .pill-link:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .hero-stamp {
-            position: relative;
-            display: flex;
-            min-height: 290px;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 19px;
-            border: 1px solid #494a40;
-            background:
-                linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px),
-                #151611;
-            background-size: 24px 24px;
-        }
-
-        .stamp-label {
-            color: #b6b7ae;
-            font-size: 0.65rem;
-            letter-spacing: 0.08em;
-        }
-
-        .stamp-mark {
-            align-self: center;
-            color: var(--accent);
-            font-size: 6rem;
-            font-weight: 300;
-            line-height: 1;
-        }
-
-        .stamp-caption {
-            color: #d1d2c9;
-            font-size: 0.76rem;
-            line-height: 1.65;
-        }
-
-        .section {
-            padding: 74px 0 84px;
-            border-top: 1px solid var(--line);
-        }
-
-        .section-heading {
-            display: grid;
-            grid-template-columns: 90px minmax(0, 1fr) minmax(200px, 310px);
-            align-items: end;
-            gap: 24px;
-            margin-bottom: 34px;
-        }
-
-        .section-index {
-            align-self: start;
-            padding-top: 10px;
-            color: var(--accent);
-            font-size: 0.75rem;
-        }
-
-        .section-label {
-            margin: 0 0 9px;
-            color: #b6b7ae;
-            font-family: var(--mono);
-            font-size: 0.66rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-        }
-
-        h2 {
-            margin: 0;
-            font-size: clamp(2.5rem, 6vw, 5.2rem);
-            font-weight: 650;
-            letter-spacing: -0.08em;
-            line-height: 0.96;
-        }
-
-        .section-description {
-            margin: 0 0 4px;
-            color: #c3c4bb;
-            font-size: 0.88rem;
-            line-height: 1.7;
-        }
-
-        .course-panel {
-            padding: 28px 34px 12px;
-            background: var(--paper);
-            color: #171813;
-        }
-
-        .course-meta {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-            padding-bottom: 21px;
-            border-bottom: 1px solid #c9c9bf;
-            color: #55564f;
-            font-size: 0.66rem;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-        }
-
-        .course-overview {
-            display: grid;
-            grid-template-columns: minmax(0, 1fr) auto;
-            align-items: end;
-            gap: 20px;
-            padding: 25px 0;
-            border-bottom: 1px solid #c9c9bf;
-        }
-
-        .course-overview h3 {
-            margin: 0;
-            font-size: clamp(1.7rem, 4vw, 3rem);
-            letter-spacing: -0.065em;
-        }
-
-        .course-overview p {
-            max-width: 560px;
-            margin: 9px 0 0;
-            color: #55564f;
-            font-size: 0.82rem;
-            line-height: 1.65;
-        }
-
-        .course-link {
-            padding: 11px 15px;
-            border: 1px solid #72736a;
-            border-radius: 999px;
-            font-size: 0.72rem;
-            font-weight: 700;
-            text-decoration: none;
-            white-space: nowrap;
-        }
-
-        .course-link:hover {
-            background: #dfe1d7;
-        }
-
-        .week-list {
-            display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 0 24px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .week-link {
-            display: flex;
-            min-height: 74px;
-            align-items: center;
-            justify-content: space-between;
-            gap: 12px;
-            border-bottom: 1px solid #c9c9c0;
-            text-decoration: none;
-            transition: padding 160ms ease, background 160ms ease;
-        }
-
-        .week-link:hover {
-            padding: 0 8px;
-            background: #e2e4da;
-        }
-
-        .week-number {
-            color: #55564f;
-            font-size: 0.64rem;
-        }
-
-        .week-name {
-            margin-left: auto;
-            font-size: 0.92rem;
-            font-weight: 650;
-        }
-
-        .week-arrow {
-            color: #55564f;
-            font-size: 1rem;
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 16px;
-        }
-
-        .project-card {
-            position: relative;
-            display: flex;
-            min-height: 280px;
-            flex-direction: column;
-            justify-content: space-between;
-            padding: 25px;
-            overflow: hidden;
-            border: 1px solid #494a40;
-            background: var(--panel);
-            color: var(--ink);
-            text-decoration: none;
-            transition: border-color 180ms ease, background-color 180ms ease, transform 180ms ease;
-        }
-
-        .project-card::after {
-            position: absolute;
-            top: 28px;
-            right: 24px;
-            color: rgba(240, 240, 233, 0.07);
-            content: "01";
-            font-family: var(--mono);
-            font-size: clamp(4rem, 9vw, 7rem);
-            line-height: 1;
-            pointer-events: none;
-        }
-
-        .project-card.machine::after { content: "02"; }
-        .project-card.desktop::after { content: "03"; }
-        .project-card.data::after { content: "04"; }
-
-        .project-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--accent);
-            background: #1d1f19;
-        }
-
-        .project-meta {
-            position: relative;
-            z-index: 1;
-            display: flex;
-            justify-content: space-between;
-            gap: 12px;
-            color: #c3c4bb;
-            font-size: 0.65rem;
-            letter-spacing: 0.07em;
-            text-transform: uppercase;
-        }
-
-        .project-title {
-            position: relative;
-            z-index: 1;
-            margin: auto 0 0;
-            padding-top: 44px;
-            font-size: clamp(2.3rem, 5.3vw, 4.7rem);
-            font-weight: 700;
-            letter-spacing: -0.09em;
-            line-height: 0.94;
-        }
-
-        .project-description {
-            position: relative;
-            z-index: 1;
-            max-width: 400px;
-            margin: 13px 0 0;
-            color: #c3c4bb;
-            font-size: 0.83rem;
-            line-height: 1.65;
-        }
-
-        .project-visit {
-            position: relative;
-            z-index: 1;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            margin-top: 20px;
-            color: var(--accent);
-            font-size: 0.75rem;
-            font-weight: 750;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(2, minmax(0, 1fr));
-            gap: 1px;
-            border: 1px solid var(--line);
-            background: var(--line);
-        }
-
-        .about-item {
-            min-height: 156px;
-            padding: 23px;
-            background: var(--panel);
-        }
-
-        .about-number {
-            color: var(--accent);
-            font-size: 0.65rem;
-        }
-
-        .about-item h3 {
-            margin: 20px 0 7px;
-            font-size: 1.05rem;
-            letter-spacing: -0.03em;
-        }
-
-        .about-item p {
-            max-width: 440px;
-            margin: 0;
-            color: #c3c4bb;
-            font-size: 0.82rem;
-            line-height: 1.7;
-        }
-
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 9px;
-            margin: 0;
-            padding: 0;
-            list-style: none;
-        }
-
-        .skills-list li {
-            padding: 11px 15px;
-            border: 1px solid #57594e;
-            border-radius: 999px;
-            color: var(--ink);
-            font-size: 0.8rem;
-        }
-
-        .contact-panel {
-            display: flex;
-            align-items: end;
-            justify-content: space-between;
-            gap: 24px;
-            padding: 35px;
-            background: var(--paper);
-            color: #171813;
-        }
-
-        .contact-panel h2 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-        }
-
-        .contact-panel p {
-            margin: 12px 0 0;
-            color: #55564f;
-            font-size: 0.9rem;
-        }
-
-        .contact-panel .hero-bottom {
-            margin-top: 0;
-        }
-
-        .contact-panel .pill-link {
-            border-color: #55564f;
-        }
-
-        .contact-panel .pill-link:hover {
-            border-color: #171813;
-            color: #171813;
-        }
-
-        .site-footer {
-            display: flex;
-            min-height: 82px;
-            align-items: center;
-            justify-content: space-between;
-            gap: 20px;
-            border-top: 1px solid var(--line);
-            color: #c3c4bb;
-            font-size: 0.68rem;
-        }
-
-        .site-footer p {
-            margin: 0;
-        }
-
-        .site-footer a {
-            color: var(--ink);
-            text-decoration: none;
-        }
-
-        @media (max-width: 760px) {
-            .shell {
-                width: min(100% - 36px, 620px);
-            }
-
-            .site-header {
-                min-height: 68px;
-            }
-
-            .nav-links {
-                gap: 16px;
-            }
-
-            .nav-links a {
-                font-size: 0.7rem;
-            }
-
-            .hero {
-                min-height: 0;
-                grid-template-columns: 1fr;
-                gap: 40px;
-                padding: 90px 0 70px;
-            }
-
-            .hero-stamp {
-                min-height: 190px;
-            }
-
-            .stamp-mark {
-                position: absolute;
-                top: 32px;
-                right: 32px;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-
-            .section-heading {
-                grid-template-columns: 46px minmax(0, 1fr);
-                gap: 12px;
-            }
-
-            .section-description {
-                grid-column: 2;
-                max-width: 430px;
-            }
-
-            .course-panel {
-                padding: 20px 20px 8px;
-            }
-
-            .course-overview {
-                grid-template-columns: 1fr;
-                align-items: start;
-            }
-
-            .course-link {
-                justify-self: start;
-            }
-
-            .week-list {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 0 14px;
-            }
-
-            .project-card {
-                min-height: 260px;
-                padding: 21px;
-            }
-
-            .about-item {
-                min-height: 170px;
-                padding: 18px;
-            }
-
-            .contact-panel {
-                align-items: start;
-                flex-direction: column;
-                padding: 27px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .shell {
-                width: calc(100% - 32px);
-            }
-
-            .nav-links {
-                gap: 11px;
-            }
-
-            .nav-links a {
-                font-size: 0.64rem;
-            }
-
-            .nav-links .nav-contact {
-                padding: 8px 10px;
-            }
-
-            .hero {
-                padding-top: 74px;
-            }
-
-            h1 {
-                font-size: clamp(4rem, 19vw, 6rem);
-            }
-
-            .hero-bottom {
-                align-items: start;
-                flex-direction: column;
-                gap: 18px;
-            }
-
-            .section-heading {
-                grid-template-columns: 35px minmax(0, 1fr);
-            }
-
-            .course-meta {
-                flex-direction: column;
-                gap: 7px;
-            }
-
-            .week-list,
-            .project-grid,
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .week-link {
-                min-height: 62px;
-            }
-
-            .project-card {
-                min-height: 230px;
-            }
-
-            .about-item {
-                min-height: 140px;
-            }
-
-            .site-footer {
-                align-items: flex-start;
-                flex-direction: column;
-                justify-content: center;
-                gap: 8px;
-                padding: 20px 0;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            html {
-                scroll-behavior: auto;
-            }
-
-            *,
-            *::before,
-            *::after {
-                transition-duration: 0.01ms !important;
-            }
-        }
-    </style>
+    <meta name="description" content="Asilbek — Computer Engineering student, web developer and AI enthusiast. Portfolio, projects and course work.">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Asilbek — Computer Engineering Student &amp; Web Developer">
+    <meta property="og:description" content="Projects, course work and portfolio by Asilbek.">
+    <meta property="og:url" content="https://asilbek-maker.github.io/">
+    <link rel="canonical" href="https://asilbek-maker.github.io/">
+    <link rel="icon" href="avatar.svg">
+    <title>Asilbek — Computer Engineering Student &amp; Web Developer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <div class="shell">
         <header class="site-header" id="top">
-            <a class="brand" href="#top" aria-label="Asilbek home">Asilbek<span>.</span></a>
-            <nav class="nav-links" aria-label="Main navigation">
-                <a href="#about">About</a>
-                <a href="#course">Course</a>
+            <a class="brand" href="#top" aria-label="Asilbek, home">Asilbek<span>.</span></a>
+            <nav class="nav" aria-label="Main navigation">
+                <a class="hide-sm" href="#about">About</a>
                 <a href="#work">Work</a>
-                <a class="nav-contact" href="#contact">Contact ↘</a>
+                <a href="#course">Course</a>
+                <a class="pill" href="#contact">Contact</a>
             </nav>
         </header>
 
-        <main id="main-content" tabindex="-1">
+        <main id="main" tabindex="-1">
             <section class="hero" aria-labelledby="hero-title">
-                <div class="hero-content">
-                    <p class="eyebrow">Computer engineering · Web developer · 2026</p>
-                    <h1 id="hero-title">BUILDING<br>FOR THE<span>WEB.</span></h1>
-                    <div class="hero-bottom">
-                        <p class="hero-description">I’m Asilbek — a Computer Engineering student exploring web development, software, and artificial intelligence. This is where I share what I’m learning and building.</p>
-                        <a class="pill-link" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
+                <div>
+                    <p class="eyebrow">Computer Engineering · Web development · AI</p>
+                    <h1 id="hero-title">Asilbek<span>.</span></h1>
+                    <p class="hero-tagline">Computer Engineering student building for the web and exploring artificial intelligence.</p>
+                    <p class="lede">This is my home on the web — a starting point for my portfolio, projects and weekly course work.</p>
+                    <div class="actions">
+                        <a class="button button-accent" href="https://asilbek-maker.github.io/portfolio/">View my portfolio <span aria-hidden="true">→</span></a>
+                        <a class="button button-ghost" href="#work">Selected work <span aria-hidden="true">↓</span></a>
                     </div>
                 </div>
-                <aside class="hero-stamp" aria-label="Learning through practice">
-                    <span class="stamp-label mono">PORTFOLIO / 2026</span>
-                    <span class="stamp-mark" aria-hidden="true">✳</span>
-                    <span class="stamp-caption">Learning through practice.<br>Building for the web.</span>
+
+                <aside class="profile-card" aria-label="Profile">
+                    <img class="avatar" src="avatar.svg" alt="Portrait of Asilbek" width="112" height="112">
+                    <div>
+                        <p class="profile-name">Asilbek</p>
+                        <p class="profile-role">Computer Engineering student</p>
+                    </div>
+                    <ul class="profile-facts">
+                        <li><span>Focus</span>Web development</li>
+                        <li><span>Exploring</span>Python &amp; AI / ML</li>
+                        <li><span>Stack</span>HTML · CSS · JS · React</li>
+                        <li><span>Goal</span>AI developer</li>
+                    </ul>
                 </aside>
             </section>
 
-            <section class="section" id="course" aria-labelledby="course-title">
+            <ul class="quick-links" aria-label="Explore">
+                <li>
+                    <a class="quick-link is-paper" href="https://asilbek-maker.github.io/portfolio/">
+                        <span>
+                            <span class="section-label">Portfolio · BECK</span>
+                            <strong>My web developer portfolio</strong>
+                            <p>Skills, featured projects and how I work.</p>
+                        </span>
+                        <span class="go">Open portfolio →</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="quick-link" href="https://asilbek-maker.github.io/Web-Programming/">
+                        <span>
+                            <span class="section-label">Course site</span>
+                            <strong>Web Programming</strong>
+                            <p>Every assignment and class exercise, week by week.</p>
+                        </span>
+                        <span class="go">Open course site →</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="quick-link" href="https://github.com/asilbek-maker" target="_blank" rel="noopener noreferrer">
+                        <span>
+                            <span class="section-label">Code</span>
+                            <strong>GitHub</strong>
+                            <p>Source code for all my projects and experiments.</p>
+                        </span>
+                        <span class="go">github.com/asilbek-maker ↗</span>
+                    </a>
+                </li>
+            </ul>
+
+            <section class="section" id="about" aria-labelledby="about-title">
                 <div class="section-heading">
                     <span class="section-index">01 /</span>
                     <div>
-                        <p class="section-label">Course archive · Weekly practice</p>
-                        <h2 id="course-title">Where I’ve<br>been learning.</h2>
+                        <p class="section-label">About</p>
+                        <h2 id="about-title">Curiosity into practice.</h2>
                     </div>
-                    <p class="section-description">A growing archive of assignments and class exercises from my Web Programming course. Open a week to explore the work.</p>
                 </div>
-
-                <div class="course-panel">
-                    <div class="course-meta">
-                        <span>Web programming course</span>
-                        <span>Selected weeks · 2026</span>
-                    </div>
-                    <div class="course-overview">
-                        <div>
-                            <h3>Web Programming</h3>
-                            <p>HTML, CSS, and hands-on web programming practice, organized week by week.</p>
-                        </div>
-                        <a class="course-link" href="https://asilbek-maker.github.io/Web-Programming/">Open course site ↗</a>
-                    </div>
-                    <ol class="week-list">
-                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week2/"><span class="week-number">WEEK / 02</span><span class="week-name">Week 2</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
-                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week3/"><span class="week-number">WEEK / 03</span><span class="week-name">Week 3</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
-                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week4/"><span class="week-number">WEEK / 04</span><span class="week-name">Week 4</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
-                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week5/"><span class="week-number">WEEK / 05</span><span class="week-name">Week 5</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
-                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week7/"><span class="week-number">WEEK / 07</span><span class="week-name">Week 7</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
-                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week8/"><span class="week-number">WEEK / 08</span><span class="week-name">Week 8</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
-                        <li><a class="week-link" href="https://asilbek-maker.github.io/Web-Programming/Week9/"><span class="week-number">WEEK / 09</span><span class="week-name">Week 9</span><span class="week-arrow" aria-hidden="true">↗</span></a></li>
-                    </ol>
+                <div class="about-items">
+                    <article class="card">
+                        <p class="card-label">01 — Education</p>
+                        <h3>Computer Engineering</h3>
+                        <p>Studying engineering and growing my skills through classwork and personal projects.</p>
+                    </article>
+                    <article class="card">
+                        <p class="card-label">02 — Current focus</p>
+                        <h3>Web development</h3>
+                        <p>Practising HTML, CSS, JavaScript and React while learning to build useful web experiences.</p>
+                    </article>
+                    <article class="card">
+                        <p class="card-label">03 — Exploring</p>
+                        <h3>Python &amp; AI / ML</h3>
+                        <p>Exploring Python, artificial intelligence and machine learning through experiments and study.</p>
+                    </article>
+                    <article class="card">
+                        <p class="card-label">04 — Next</p>
+                        <h3>Build real products</h3>
+                        <p>Creating real-world applications and continuing toward becoming an AI developer.</p>
+                    </article>
                 </div>
             </section>
 
@@ -830,120 +124,122 @@
                 <div class="section-heading">
                     <span class="section-index">02 /</span>
                     <div>
-                        <p class="section-label">Featured projects · 2026</p>
-                        <h2 id="work-title">Featured<br>work.</h2>
+                        <p class="section-label">Selected work</p>
+                        <h2 id="work-title">Featured projects.</h2>
                     </div>
-                    <p class="section-description">Coursework, experiments, and projects that are helping me learn by building.</p>
                 </div>
 
-                <div class="project-grid">
-                    <a class="project-card overlap" href="https://overlaps.tech" target="_blank" rel="noopener noreferrer">
-                        <span class="project-meta"><span>Live project</span><span>01 / Web</span></span>
-                        <div>
-                            <h3 class="project-title">Overlap</h3>
-                            <p class="project-description">A campus dating web app. Visit the live site to explore the project.</p>
-                            <span class="project-visit">Visit overlaps.tech <span aria-hidden="true">↗</span></span>
+                <article class="project-feature">
+                    <div>
+                        <p class="project-type">01 · Live product · Web</p>
+                        <h3>Overlap</h3>
+                        <p class="project-description">A campus introduction app that helps students find common ground and meet people with shared interests.</p>
+                        <ul class="chips chips-dark" aria-label="Project tags"><li>Team project</li><li>Web app</li><li>Live</li></ul>
+                    </div>
+                    <div class="project-links">
+                        <a class="button button-primary" href="https://overlaps.tech" target="_blank" rel="noopener noreferrer">Visit overlaps.tech <span aria-hidden="true">↗</span></a>
+                    </div>
+                </article>
+
+                <div class="repo-grid">
+                    <article class="card project-card">
+                        <p class="project-type">02 · AI</p>
+                        <h3>Machine Learning</h3>
+                        <p>Machine learning experiments and data-focused programming practice.</p>
+                        <p class="stack">Python · ML</p>
+                        <div class="card-links">
+                            <a href="https://github.com/asilbek-maker/Machine-Learning" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
                         </div>
-                    </a>
-                    <a class="project-card machine" href="https://github.com/asilbek-maker/Machine-Learning" target="_blank" rel="noopener noreferrer">
-                        <span class="project-meta"><span>Experiments</span><span>02 / AI</span></span>
-                        <div>
-                            <h3 class="project-title">Machine<br>Learning</h3>
-                            <p class="project-description">Machine learning experiments and data-focused programming practice.</p>
-                            <span class="project-visit">View project <span aria-hidden="true">↗</span></span>
+                    </article>
+                    <article class="card project-card">
+                        <p class="project-type">03 · Data</p>
+                        <h3>Data Process Programming</h3>
+                        <p>Programming exercises and data processing projects from coursework.</p>
+                        <p class="stack">Coursework · Data</p>
+                        <div class="card-links">
+                            <a href="https://github.com/asilbek-maker/Data-Process-Programming" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
                         </div>
-                    </a>
-                    <a class="project-card desktop" href="https://github.com/asilbek-maker/desktop-tutorial" target="_blank" rel="noopener noreferrer">
-                        <span class="project-meta"><span>Programming</span><span>03 / Build</span></span>
-                        <div>
-                            <h3 class="project-title">Desktop<br>Tutorial</h3>
-                            <p class="project-description">Programming and desktop development practice projects.</p>
-                            <span class="project-visit">View project <span aria-hidden="true">↗</span></span>
+                    </article>
+                    <article class="card project-card">
+                        <p class="project-type">04 · Build</p>
+                        <h3>Desktop Tutorial</h3>
+                        <p>Programming and desktop development practice projects.</p>
+                        <p class="stack">Programming · Git</p>
+                        <div class="card-links">
+                            <a href="https://github.com/asilbek-maker/desktop-tutorial" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
                         </div>
-                    </a>
-                    <a class="project-card data" href="https://github.com/asilbek-maker/Data-Process-Programming" target="_blank" rel="noopener noreferrer">
-                        <span class="project-meta"><span>Coursework</span><span>04 / Data</span></span>
-                        <div>
-                            <h3 class="project-title">Data Process<br>Programming</h3>
-                            <p class="project-description">Programming exercises and data processing projects.</p>
-                            <span class="project-visit">View project <span aria-hidden="true">↗</span></span>
-                        </div>
-                    </a>
+                    </article>
                 </div>
             </section>
 
-            <section class="section" id="about" aria-labelledby="about-title">
+            <section class="section" id="course" aria-labelledby="course-title">
                 <div class="section-heading">
                     <span class="section-index">03 /</span>
                     <div>
-                        <p class="section-label">A little about me</p>
-                        <h2 id="about-title">Curiosity into<br>practice.</h2>
+                        <p class="section-label">Course archive</p>
+                        <h2 id="course-title">Web Programming, week by week.</h2>
                     </div>
-                    <p class="section-description">Computer Engineering student interested in software development, web technologies, and artificial intelligence.</p>
                 </div>
-
-                <div class="about-grid">
-                    <article class="about-item">
-                        <span class="about-number">01 — EDUCATION</span>
-                        <h3>Computer Engineering</h3>
-                        <p>Studying engineering and growing my skills through classwork and personal projects.</p>
-                    </article>
-                    <article class="about-item">
-                        <span class="about-number">02 — CURRENT FOCUS</span>
-                        <h3>Web development</h3>
-                        <p>Practicing HTML, CSS, JavaScript, and React while learning how to build useful web experiences.</p>
-                    </article>
-                    <article class="about-item">
-                        <span class="about-number">03 — EXPLORING</span>
-                        <h3>Python &amp; AI / ML</h3>
-                        <p>Exploring Python, artificial intelligence, and machine learning through experiments and study.</p>
-                    </article>
-                    <article class="about-item">
-                        <span class="about-number">04 — NEXT</span>
-                        <h3>Build and keep learning</h3>
-                        <p>My goal is to create real-world applications and continue toward becoming an AI developer.</p>
-                    </article>
+                <div class="week-panel">
+                    <div class="week-meta">
+                        <p>Assignments and class exercises from my Web Programming course.</p>
+                        <a class="button" href="https://asilbek-maker.github.io/Web-Programming/">Open course site <span aria-hidden="true">↗</span></a>
+                    </div>
+                    <ol class="week-list">
+                        <li><a href="https://asilbek-maker.github.io/Web-Programming/Week2/"><span class="num">02</span><span class="name">Week 2<span class="topic">HTML &amp; CSS foundations</span></span><span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://asilbek-maker.github.io/Web-Programming/Week3/"><span class="num">03</span><span class="name">Week 3<span class="topic">CSS layout &amp; styling</span></span><span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://asilbek-maker.github.io/Web-Programming/Week4/"><span class="num">04</span><span class="name">Week 4<span class="topic">JavaScript &amp; the DOM</span></span><span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://asilbek-maker.github.io/Web-Programming/Week5/"><span class="num">05</span><span class="name">Week 5<span class="topic">JavaScript logic</span></span><span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://asilbek-maker.github.io/Web-Programming/Week6/"><span class="num">06</span><span class="name">Week 6<span class="topic">Forms &amp; browser APIs</span></span><span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://asilbek-maker.github.io/Web-Programming/Week7/"><span class="num">07</span><span class="name">Week 7<span class="topic">Fetch &amp; external APIs</span></span><span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://asilbek-maker.github.io/Web-Programming/Week8/"><span class="num">08</span><span class="name">Week 8<span class="topic">Validation &amp; accessibility</span></span><span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://asilbek-maker.github.io/Web-Programming/Week9/"><span class="num">09</span><span class="name">Week 9<span class="topic">Accessibility &amp; performance</span></span><span aria-hidden="true">↗</span></a></li>
+                        <li><a href="https://asilbek-maker.github.io/Web-Programming/Week10/"><span class="num">10</span><span class="name">Week 10<span class="topic">Deployment &amp; portfolio</span></span><span aria-hidden="true">↗</span></a></li>
+                    </ol>
                 </div>
             </section>
 
-            <section class="section" aria-labelledby="skills-title">
+            <section class="section" id="skills" aria-labelledby="skills-title">
                 <div class="section-heading">
                     <span class="section-index">04 /</span>
                     <div>
-                        <p class="section-label">Tools &amp; technologies</p>
-                        <h2 id="skills-title">Currently<br>exploring.</h2>
+                        <p class="section-label">Skills</p>
+                        <h2 id="skills-title">Tools &amp; technologies.</h2>
                     </div>
-                    <p class="section-description">A snapshot of the languages, tools, and topics I’m learning and using in my work.</p>
                 </div>
-                <ul class="skills-list">
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                    <li>JavaScript</li>
-                    <li>React</li>
-                    <li>Python</li>
-                    <li>Git</li>
-                    <li>GitHub</li>
-                    <li>AI / ML</li>
-                </ul>
+                <div class="skills-grid">
+                    <div class="card">
+                        <h3 class="card-label">Web</h3>
+                        <ul class="chips"><li>HTML5</li><li>CSS3</li><li>JavaScript</li><li>React</li></ul>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-label">Programming</h3>
+                        <ul class="chips"><li>Python</li><li>Data processing</li></ul>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-label">AI</h3>
+                        <ul class="chips"><li>Machine learning</li><li>AI / ML experiments</li></ul>
+                    </div>
+                    <div class="card">
+                        <h3 class="card-label">Tools</h3>
+                        <ul class="chips"><li>Git</li><li>GitHub</li><li>GitHub Pages</li></ul>
+                    </div>
+                </div>
             </section>
 
-            <section class="section" id="contact" aria-labelledby="contact-title">
-                <div class="contact-panel">
-                    <div>
-                        <p class="section-label">Have a project or idea?</p>
-                        <h2 id="contact-title">Let’s connect.</h2>
-                        <p>Reach out by email or find me on GitHub.</p>
-                    </div>
-                    <div class="hero-bottom">
-                        <a class="pill-link" href="mailto:asilbek@gachon.ac.kr">Email me ↗</a>
-                        <a class="pill-link" href="https://github.com/asilbek-maker" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-                    </div>
+            <section class="contact" id="contact" aria-labelledby="contact-title">
+                <p class="eyebrow">05 / Contact</p>
+                <h2 id="contact-title">Let’s connect<span>.</span></h2>
+                <p class="lede">Have a project, idea or question? Reach out by email or find me on GitHub.</p>
+                <div class="actions">
+                    <a class="button button-accent" href="mailto:asilbek@gachon.ac.kr">Email me <span aria-hidden="true">↗</span></a>
+                    <a class="button button-ghost" href="https://github.com/asilbek-maker" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a>
                 </div>
             </section>
         </main>
 
         <footer class="site-footer">
-            <p>© 2026 Asilbek · Computer Engineering Student</p>
+            <p>© 2026 ASILBEK · COMPUTER ENGINEERING STUDENT</p>
             <a href="#top">Back to top ↑</a>
         </footer>
     </div>
